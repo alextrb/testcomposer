@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript" src="sgvizler.js"></script>
+    </head>
+<body style="margin:0;">
+<div id="sgvzl_example_query" 
+   data-sgvizler-endpoint="https://query.wikidata.org/sparql" 
+   data-sgvizler-query="PREFIX bd: &lt;http://www.bigdata.com/rdf#&gt; 
+                        PREFIX wikibase: &lt;http://wikiba.se/ontology#&gt; 
+                        PREFIX wd: &lt;http://www.wikidata.org/entity/&gt;  
+                        PREFIX wdt: &lt;http://www.wikidata.org/prop/direct/&gt; 
+
+                        select   ?countryLabel (COUNT(?asteroid) as ?nb) 
+                        where {
+                                ?asteroid wdt:P31 wd:Q3863 ;
+                                          wdt:P61 ?discoverer .
+                             ?discoverer wdt:P27 ?country . 
+
+                               SERVICE wikibase:label {
+                                bd:serviceParam wikibase:language &quot;en&quot; .
+                              } .         
+                        } 
+                        GROUP BY  ?countryLabel
+                        ORDER BY DESC(?nb)" 
+     
+    data-sgvizler-chart='sgvizler.visualization.Table_pict'/>
+
+    <script>
+    $(document).ready(function() { 
+        sgvizler.containerDrawAll();     
+    });
+    </script>
+</body>
+</html>

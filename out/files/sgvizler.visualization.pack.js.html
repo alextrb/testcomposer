@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>sgvizler.visualization.pack.js - Sgvizler</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="http://beta.data2000.no/misc/image/mr.sgvizler.png" title="Sgvizler"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.6.0</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/MyOwnNamespace.HelloWorld.html">MyOwnNamespace.HelloWorld</a></li>
+                                <li><a href="../classes/sgvizler.html">sgvizler</a></li>
+                                <li><a href="../classes/sgvizler.charts.html">sgvizler.charts</a></li>
+                                <li><a href="../classes/sgvizler.charts.Chart.html">sgvizler.charts.Chart</a></li>
+                                <li><a href="../classes/sgvizler.container.html">sgvizler.container</a></li>
+                                <li><a href="../classes/sgvizler.core.html">sgvizler.core</a></li>
+                                <li><a href="../classes/sgvizler.datatable.html">sgvizler.datatable</a></li>
+                                <li><a href="../classes/sgvizler.datatables.html">sgvizler.datatables</a></li>
+                                <li><a href="../classes/sgvizler.defaults.html">sgvizler.defaults</a></li>
+                                <li><a href="../classes/sgvizler.form.html">sgvizler.form</a></li>
+                                <li><a href="../classes/sgvizler.loader.html">sgvizler.loader</a></li>
+                                <li><a href="../classes/sgvizler.logger.html">sgvizler.logger</a></li>
+                                <li><a href="../classes/sgvizler.namespace.html">sgvizler.namespace</a></li>
+                                <li><a href="../classes/sgvizler.parser.html">sgvizler.parser</a></li>
+                                <li><a href="../classes/sgvizler.Query.html">sgvizler.Query</a></li>
+                                <li><a href="../classes/sgvizler.registry.html">sgvizler.registry</a></li>
+                                <li><a href="../classes/sgvizler.util.html">sgvizler.util</a></li>
+                                <li><a href="../classes/sgvizler.visualization.D3ForceGraph.html">sgvizler.visualization.D3ForceGraph</a></li>
+                                <li><a href="../classes/sgvizler.visualization.DefList.html">sgvizler.visualization.DefList</a></li>
+                                <li><a href="../classes/sgvizler.visualization.DraculaGraph.html">sgvizler.visualization.DraculaGraph</a></li>
+                                <li><a href="../classes/sgvizler.visualization.List.html">sgvizler.visualization.List</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Map.html">sgvizler.visualization.Map</a></li>
+                                <li><a href="../classes/sgvizler.visualization.MapWKT.html">sgvizler.visualization.MapWKT</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Table.html">sgvizler.visualization.Table</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Table_pict.html">sgvizler.visualization.Table_pict</a></li>
+                                <li><a href="../classes/sgvizler.visualization.Text.html">sgvizler.visualization.Text</a></li>
+                                <li><a href="../classes/sgvizler.visualization.util.html">sgvizler.visualization.util</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: sgvizler.visualization.pack.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+    /**
+     * .visualization
+     * @main sgvizler.visualization
+     */
+    S.visualization = (function () {
+
+        // Module dependencies:
+        var util = S.util,
+            namespace = S.namespace,
+            charts = S.charts,
+
+            C = {}, // sgvizler.visualization
+
+            modSC = &quot;sgvizler.visualization&quot;;
+
+        /** 
+         * Make a html dt list.
+         *
+         * Format, 2--N columns:
+         * 1. Term
+         * 2--N. Definition
+         * 
+         * @class sgvizler.visualization.DefList
+         * @extends sgvizler.charts.Chart
+         * @constructor
+         * @param {Object} container The container element where the
+         * chart will be drawn.
+         */
+
+        /** 
+         * Available options:
+         * 
+         *  - &#x27;cellSep&#x27;   :  string (can be html) to separate cells in definition columns. (default: &#x27; &#x27;)
+         *  - &#x27;termPrefix  :  string (can be html) to prefix each term with. (default: &#x27;&#x27;)
+         *  - &#x27;termPostfix :  string (can be html) to postfix each term with. (default: &#x27;:&#x27;)
+         *  - &#x27;definitionPrefix  :  string (can be html) to prefix each definition with. (default: &#x27;&#x27;)
+         *  - &#x27;definitionPostfix :  string (can be html) to postfix each definition with. (default: &#x27;&#x27;)
+         * 
+         * @method draw
+         * @public
+         * @param {google.visualization.DataTable} data
+         * @param {Object} [chartOptions]
+         * @since 0.3.0
+         **/
+        C.DefList = charts.add(modSC, &#x27;DefList&#x27;,
+            function (data, chartOpt) {
+                var r, noRows = data.getNumberOfRows(),
+                    c, noColumns = data.getNumberOfColumns(),
+                    opt = $.extend({ cellSep: &#x27; &#x27;,
+                                     termPrefix: &#x27;&#x27;,
+                                     termPostfix: &#x27;:&#x27;,
+                                     definitionPrefix: &#x27;&#x27;,
+                                     definitionPostfix: &#x27;&#x27; },
+                                   chartOpt),
+                    list = &quot;&quot;,
+                    term,
+                    definition;
+
+                for (r = 0; r &lt; noRows; r += 1) {
+                    term = &#x27;&lt;dt&gt;&#x27; +
+                        opt.termPrefix +
+                        C.util.linkify2String(data.getValue(r, 0)) +
+                        opt.termPostfix +
+                        &#x27;&lt;/dt&gt;&#x27;;
+                    definition = &#x27;&lt;dd&gt;&#x27; +
+                        opt.definitionPrefix;
+
+                    for (c = 1; c &lt; noColumns; c += 1) {
+                        definition += C.util.linkify2String(data.getValue(r, c));
+                        if (c + 1 !== noColumns) {
+                            definition += opt.cellSep;
+                        }
+                    }
+                    definition += opt.definitionPostfix +
+                        &#x27;&lt;/dd&gt;&#x27;;
+                    list += term + definition;
+                }
+
+                $(this.container)
+                    .empty()
+                    .html(list);
+
+                this.fireListener(&#x27;ready&#x27;);
+            }
+            );
+
+        /** 
+         * Make a standard simple html table.
+         * 
+         * @class sgvizler.visualization.Table
+         * @extends sgvizler.charts.Chart
+         * @constructor
+         * @param {Object} container The container element where the
+         * chart will be drawn.
+         * @since 0.5.1
+         **/
+
+        /** 
+         * Available options:
+         *  - &#x27;headings&#x27;   :  &quot;true&quot; / &quot;false&quot;  (default: &quot;true&quot;)
+         *
+         * @method draw
+         * @public
+         * @param {google.visualization.DataTable} data
+         * @param {Object} [chartOptions]
+         * @since 0.5.1
+         **/
+        C.Table = charts.add(modSC, &quot;Table&quot;,
+            function (data, chartOpt) {
+                var c, noColumns = data.getNumberOfColumns(),
+                    r, noRows = data.getNumberOfRows(),
+                    opt = $.extend({ headings: true }, chartOpt),
+                    table,
+                    rows = [],
+                    cells = [];
+
+                if (opt.headings) {
+                    for (c = 0; c &lt; noColumns; c += 1) {
+                        cells.push([&#x27;th&#x27;, null, data.getColumnLabel(c)]);
+                    }
+                    rows.push([&#x27;tr&#x27;, null, cells]);
+                }
+
+                for (r = 0; r &lt; noRows; r += 1) {
+                    cells = [];
+                    for (c = 0; c &lt; noColumns; c += 1) {
+                        cells.push([&#x27;td&#x27;, null, [C.util.linkify2HTMLElementArray(data.getValue(r, c))]]);
+                    }
+                    rows.push([&#x27;tr&#x27;, null, cells]);
+                }
+
+                table = util.createHTMLElement(&#x27;table&#x27;, null, rows);
+                $(this.container).empty().html(table);
+
+                this.fireListener(&#x27;ready&#x27;);
+            }
+            );
+
+        /**
+         * @class sgvizler.visualization.MapWKT
+         * @extends sgvizler.charts.Chart
+         * @constructor
+         * @param {Object} container The container element where the
+         * chart will be drawn.
+         * @since 0.6.0
+         **/
+
+        /**
+         * @method draw
+         * @public
+         * @param {google.visualization.DataTable} data
+         * @param {Object} [chartOptions]
+         * @since 0.6.0
+         */
+        C.MapWKT = charts.add(modSC, &quot;MapWKT&quot;,
+            function (data, chartOpt) {
+                /*global google, OpenLayers */
+                var //c,
+                    noColumns = data.getNumberOfColumns(),
+                    r, noRows = data.getNumberOfRows(),
+                    //that = this,
+                    opt = $.extend(
+                        {
+                            zoom: 5,
+                            centerLat: 62,
+                            centerLong: 2,
+                            //mapTypeId: google.maps.MapTypeId.TERRAIN,
+                            //douglasPeuckerKink: 5000,
+                            geoDatumIn: &quot;EPSG:4326&quot;,//&quot;EPSG:4230&quot;,
+                            geoDatumOut: &quot;EPSG:4326&quot;
+                        },
+                        chartOpt
+                    ),
+
+                    mapOptions = {
+                        projection: opt.geoDatumOut,
+                        layers: [
+                            new OpenLayers.Layer.OSM(),
+                            // new OpenLayers.Layer.WMS(
+                            //     &quot;OpenLayers WMS&quot;,
+                            //     &quot;http://vmap0.tiles.osgeo.org/wms/vmap0?&quot;, {layers: &#x27;basic&#x27;}
+                            // ),
+                            new OpenLayers.Layer.Google(
+                                &quot;Google Physical&quot;,
+                                {type: google.maps.MapTypeId.TERRAIN}
+                            ),
+                            new OpenLayers.Layer.Google(
+                                &quot;Google Streets&quot;,
+                                {numZoomLevels: 20}
+                            ),
+                            new OpenLayers.Layer.Google(
+                                &quot;Google Hybrid&quot;,
+                                {type: google.maps.MapTypeId.HYBRID, numZoomLevels: 20}
+                            ),
+                            new OpenLayers.Layer.Google(
+                                &quot;Google Satellite&quot;,
+                                {type: google.maps.MapTypeId.SATELLITE, numZoomLevels: 22}
+                            )
+                        ],
+                        controls: [
+                            new OpenLayers.Control.Navigation(),
+                            new OpenLayers.Control.PanZoomBar(),
+                            new OpenLayers.Control.LayerSwitcher({ ascending: false }),
+                            new OpenLayers.Control.Permalink(),
+                            new OpenLayers.Control.ScaleLine(),
+                            new OpenLayers.Control.MousePosition(),
+                            new OpenLayers.Control.OverviewMap(),
+                            new OpenLayers.Control.KeyboardDefaults()
+                        ],
+                        center: new OpenLayers.LonLat(opt.centerLong, opt.centerLat),
+                        zoom: 5
+                    },
+                    mapBounds,
+                    map = new OpenLayers.Map(this.container, mapOptions),
+
+                    formatterWKT = new OpenLayers.Format.WKT(
+                        {
+                            internalProjection: map.baseLayer.projection,
+                            externalProjection: new OpenLayers.Projection(opt.geoDatumIn)
+                        }
+                    ),
+
+                    resultLayer = new OpenLayers.Layer.Vector(
+                        &quot;Results&quot;,
+                        {
+                            styleMap: new OpenLayers.StyleMap(
+                                {
+                                    &#x27;default&#x27;: new OpenLayers.Style(
+                                        {
+                                            fillColor: &quot;#33CC00&quot;,
+                                            fillOpacity: 0.2,
+                                            strokeColor: &quot;#000000&quot;,
+                                            strokeWidth: 1
+                                        }
+                                    )
+                                }
+                            )
+                        }
+                    ),
+                    labelLayer = new OpenLayers.Layer.Vector(
+                        &quot;Labels&quot;,
+                        {
+                            eventListeners: {
+                                featureselected: function (evt) {
+                                    var feature = evt.feature,
+                                        popup = new OpenLayers.Popup.FramedCloud(
+                                            &quot;popup&quot;,
+                                            OpenLayers.LonLat.fromString(feature.geometry.toShortString()),
+                                            null,
+                                            &quot;&lt;div style=&#x27;font-size:.8em&#x27;&gt;&quot;
+                                                + &quot;&lt;b&gt;&quot; + feature.attributes.name + &quot;&lt;/b&gt;&lt;br/&gt;&quot;
+                                                + C.util.linkify2String(feature.attributes.uri) + &quot;&lt;br/&gt;&quot;
+                                                + feature.attributes.description
+                                                + &quot;&lt;/div&gt;&quot;,
+                                            null,
+                                            true
+                                        );
+                                    feature.popup = popup;
+                                    map.addPopup(popup);
+                                },
+                                featureunselected: function (evt) {
+                                    var feature = evt.feature;
+                                    map.removePopup(feature.popup);
+                                    feature.popup.destroy();
+                                    feature.popup = null;
+                                }
+                            },
+                            styleMap: new OpenLayers.StyleMap(
+                                {
+                                    &quot;default&quot;: new OpenLayers.Style(
+                                        {
+                                            strokeColor: &quot;#FF0000&quot;,
+                                            strokeOpacity: 1,
+                                            strokeWidth: 5,
+                                            fillColor: &quot;#FF0000&quot;,
+                                            fillOpacity: 0.5,
+                                            pointRadius: 2,
+                                            //pointerEvents: &quot;visiblePainted&quot;,
+
+                                            label : &quot;${name}&quot;,
+                                            fontSize: &quot;10px&quot;,
+                                            fontFamily: &quot;Arial&quot;,
+                                            labelAlign: &quot;l&quot;,
+                                            labelOutlineColor: &quot;white&quot;,
+                                            labelOutlineWidth: 1,
+                                            labelXOffset : 7
+                                        }
+                                    )
+                                }
+                            )
+                        }
+                    ),
+
+                    selector = new OpenLayers.Control.SelectFeature(
+                        labelLayer,
+                        {
+                            click: true,
+                            autoActivate: true
+                        }
+                    ),
+
+                    wktFeature,
+                    labelFeature,
+
+                    addWKT = function (layer, valueWKT) {
+                        var features = formatterWKT.read(valueWKT),
+                            i;
+
+                        if (features) {
+                            if (!util.isArray(features.constructor)) {
+                                features = [features];
+                            }
+                            for (i = 0; i &lt; features.length; i += 1) {
+                                if (!mapBounds) {
+                                    mapBounds = features[i].geometry.getBounds();
+                                } else {
+                                    mapBounds.extend(features[i].geometry.getBounds());
+                                }
+                            }
+                            layer.addFeatures(features);
+                        }
+                        return features;
+                    };
+
+                //Proj4js.defs[&quot;EPSG:4230&quot;] = &quot;+proj=longlat +ellps=intl +no_defs&quot;;
+
+                //////////////////////////////////////////////////////////////////////
+
+                for (r = 0; r &lt; noRows; r += 1) {
+                    // add WKT
+                    wktFeature = addWKT(resultLayer, data.getValue(r, 0));
+
+                    // add Label
+                    labelFeature = new OpenLayers.Feature.Vector(wktFeature[0].geometry.getCentroid());
+
+                    labelFeature.attributes.name =
+                        (noColumns &gt; 1 &amp;&amp; data.getValue(r, 1)) ? data.getValue(r, 1) : &quot;&quot;;
+                    labelFeature.attributes.uri =
+                        (noColumns &gt; 2 &amp;&amp; data.getValue(r, 2)) ? data.getValue(r, 2) : &quot;&quot;;
+                    labelFeature.attributes.description =
+                        (noColumns &gt; 3 &amp;&amp; data.getValue(r, 3)) ? data.getValue(r, 3) : &quot;&quot;;
+
+                    labelLayer.addFeatures([labelFeature]);
+                }
+
+                map.addLayer(resultLayer);
+                map.addLayer(labelLayer);
+
+                map.addControl(selector);
+
+                map.zoomToExtent(mapBounds);
+
+                this.fireListener(&#x27;ready&#x27;);
+
+            },
+            // Dependencies. { function: what-to-load }
+            {
+                &#x27;google.maps.Map&#x27;: &#x27;google.maps.Map&#x27;,
+                &#x27;OpenLayers&#x27;: &#x27;//cdnjs.cloudflare.com/ajax/libs/openlayers/2.12/OpenLayers.min.js&#x27;
+                //&#x27;GDouglasPeucker&#x27;: &#x27;http://www.bdcc.co.uk/Gmaps/GDouglasPeuker.js&#x27;,
+                //&#x27;Proj4js&#x27;: &#x27;http://localhost/sgvizler/trunk/lib/proj4js-compressed.js&#x27;
+            }
+            );
+
+        /**
+         * Draws a graph with clickable and movable nodes.
+         *
+         * Input format:
+         *
+         *  - 7 columns, last three are optional.
+         *  - each row represents a source node, a target node and an edge from source to target.
+         *  - the URIs are the id&#x27;s for the nodes, and make the nodes clickable.
+         *
+         * Columns:
+         *
+         *  1. sourceURI
+         *  2. sourceLabel
+         *  3. targetURI
+         *  4. targetLabel
+         *  5. edgeLabel
+         *  6. sourceColor
+         *  7. targetColor
+         *
+         * @class sgvizler.visualization.DraculaGraph
+         * @extends sgvizler.charts.Chart
+         * @constructor
+         * @param {Object} container The container element where the
+         * chart will be drawn.
+         * @beta
+         * @author Magnus Stuhr, Martin G. Skjæveland
+         */
+
+        /**
+         * @method draw
+         * @public
+         * @param {google.visualization.DataTable} data
+         * @param {Object} [chartOptions]
+         * @since 0.5.1
+         */
+        /*global Dracula */
+        C.DraculaGraph = charts.add(modSC, &quot;DraculaGraph&quot;,
+            function (data, chartOpt) {
+
+                var row, numberOfRows = data.getNumberOfRows(),
+                    i, len,
+                    numberOfColumns = data.getNumberOfColumns(),
+
+                    // set defaults.
+                    opt = $.extend({
+                        noderadius: 0.5,
+                        nodefontsize: &quot;10px&quot;,
+                        nodeheight: 20,
+                        nodestrokewidth: &quot;1px&quot;,
+                        directed: false,
+                        nodecornerradius: &quot;1px&quot;,
+                        nodepadding: 7,
+                        nodecolor: &quot;green&quot;,
+                        edgestroke: &quot;blue&quot;,
+                        edgefill: &quot;blue&quot;,
+                        edgestrokewidth: 1,
+                        edgefontsize: &quot;10px&quot;,
+                        edgeseparator: &quot;, &quot;
+                    }, chartOpt),
+
+                    graph = new Dracula.Graph(),
+                    layouter,
+                    renderer,
+                    edge,
+                    source,
+                    target,
+                    label,
+
+                    // custom node rendering using Raphael.
+                    nodeRenderer = function (color, URL) {
+                        return function (r, n) {
+                            return r.set()
+                                // rectangle
+                                .push(r.rect(n.point[0],
+                                             n.point[1],
+                                             n.label.length * opt.nodepadding,
+                                             opt.nodeheight)
+                                      .attr({fill: color,
+                                             &#x27;stroke-width&#x27;: opt.nodestrokewidth,
+                                             r : opt.nodecornerradius}))
+                                // label inside rectangle
+                                .push(r.text(n.point[0] + n.label.length * opt.nodepadding / 2,
+                                             n.point[1] + opt.nodeheight / 2,
+                                             n.label)
+                                      .attr({&#x27;font-size&#x27;: opt.nodefontsize})
+                                      .click(function () { if (URL) { window.open(namespace.unprefixify(URL)); } })
+                                     );
+                        };
+                    },
+
+                    // helper function.
+                    addNode = function (URL, name, color) {
+                        graph.addNode(URL, {label: name, render: nodeRenderer(color, URL)});
+                        //console.log(&quot;add node - name: &quot; + name + &quot;, URL: &quot; + URL);
+                    },
+                    edges = {},
+                    keys_edges = [];
+
+                for (row = 0; row &lt; numberOfRows; row += 1) {
+                    source = data.getValue(row, 0);
+                    target = data.getValue(row, 2);
+
+                    // add source node
+                    // Note: does dracula take care of duplicates?
+                    if (source) {
+                        addNode(source,
+                                data.getValue(row, 1) || source,
+                                numberOfColumns &gt; 5 ? data.getValue(row, 5) : opt.nodecolor);
+                    }
+                    // add target node
+                    if (target) {
+                        addNode(target,
+                                data.getValue(row, 3) || target,
+                                numberOfColumns &gt; 6 ? data.getValue(row, 6) : opt.nodecolor);
+                    }
+
+                    // collect edge labels. Only one edge per pair of nodes,
+                    // so we concatinate labels of multiple edges into one.
+                    if (source &amp;&amp; target) {
+                        label = &quot;&quot;;
+                        // test if source--target pair is seen before:
+                        if (edges[source + target] !== undefined) {
+                            label = edges[source + target].label; // retrieve accumulated label.
+                        } else {
+                            keys_edges.push(source + target);
+                        }
+
+                        if (numberOfColumns &gt; 4 &amp;&amp; data.getValue(row, 4).length &gt; 0) {
+                            if (label.length &gt; 0) {
+                                label += opt.edgeseparator;
+                            }
+                            label += data.getValue(row, 4);
+                        }
+
+                        edges[source + target] = {
+                            source: source,
+                            target: target,
+                            label: label
+                        };
+                    }
+                }
+
+                // add edges
+                for (i = 0, len = keys_edges.length; i &lt; len; i += 1) {
+                    edge = edges[keys_edges[i]];
+                    //console.log(&quot;add edge - source: &quot; + edge.source + &quot;, target &quot; + edge.target);
+                    graph.addEdge(edge.source, edge.target,
+                                  { stroke: opt.edgestroke,
+                                    directed: opt.directed,
+                                    fill: opt.edgefill,
+                                    label: edge.label,
+                                    width: opt.edgestrokewidth,
+                                    fontsize: opt.edgefontsize
+                                  });
+                }
+
+                layouter = new Dracula.Graph.Layout.Spring(graph);
+                layouter.layout();
+
+                $(this.container).empty();
+                renderer = new Dracula.Graph.Renderer.Raphael(
+                    this.container,
+                    graph,
+                    opt.width,
+                    opt.height,
+                    { noderadius : opt.nodeheight * opt.noderadius}
+                );
+                renderer.draw();
+
+                this.fireListener(&#x27;ready&#x27;);
+            },
+            { Dracula: &#x27;http://www.data2000.no/sgvizler/lib/raphael-dracula.min.js&#x27; }
+            );
+
+        /** 
+         * Make an html table with links and images.
+         * 
+         * @class sgvizler.visualization.Table_pict
+         * @extends sgvizler.charts.Chart
+         * @constructor
+         * @param {Object} container The container element where the
+         * chart will be drawn.
+         * @since 0.5.1
+         **/
+
+        /** 
+         * Available options:
+         *  - &#x27;headings&#x27;   :  &quot;true&quot; / &quot;false&quot;  (default: &quot;true&quot;)
+         *  - &#x27;borders&#x27;    : any type of table from Bootstrap
+         *  - &#x27;im_width&#x27;   : width of images in the table
+         *  - &#x27;im_height&#x27;  : height of images in the table
+         *
+         * @method draw
+         * @public
+         * @param {google.visualization.DataTable} data
+         * @param {Object} [chartOptions]
+         * @since 0.5.1
+         **/
+        C.Table_pict = charts.add(modSC, &quot;Table_pict&quot;,
+            function (data, chartOpt) {
+                var c, noColumns = data.getNumberOfColumns(),
+                    r, noRows = data.getNumberOfRows(),
+                    opt = $.extend({ headings: true, 
+                                     borders: &#x27;table table-bordered&#x27;, 
+                                     im_width: &#x27;100&#x27;,
+                                     im_height: &#x27;100&#x27;},
+                                   chartOpt),
+                    table,
+                    rows = [],
+                    cells = [];
+
+                C.util.loadBOOTSTRAP();
+
+                if (opt.headings) {
+                    for (c = 0; c &lt; noColumns; c += 1) {
+                        cells.push([&#x27;th&#x27;, null, data.getColumnLabel(c)]);
+                    }
+                    rows.push([&#x27;tr&#x27;, null, cells]);
+                }
+                // The false value returned by linkify2String in linkify allow
+                // to check if the data (row r, col c) is an image
+                for (r = 0; r &lt; noRows; r += 1) {
+                    cells = [];
+                    for (c = 0; c &lt; noColumns; c += 1) {
+                        cells.push([&#x27;td&#x27;, null, [C.util.linkify2String(data.getValue(r, c), opt.im_width, opt.im_height)]]);
+                    }
+                    rows.push([&#x27;tr&#x27;, null, cells]);
+                }
+
+                table = util.createHTMLElement(&#x27;table&#x27;, {&#x27;class&#x27;: opt.borders}, rows);
+                $(this.container).empty().html(table);
+
+                this.fireListener(&#x27;ready&#x27;);
+            }
+            );
+        /** 
+         * Write text.
+         *
+         * Any number of columns. Everything is displayed as text.
+         * 
+         * @class sgvizler.visualization.Text
+         * @extends sgvizler.charts.Chart
+         * @constructor
+         * @param {Object} container The container element where the
+         * chart will be drawn.
+         * @since 0.3.0
+         **/
+
+        /** 
+         * Available options:
+         * 
+         *  - &#x27;cellSep&#x27;       :  string (can be html) to separate cells in each column. (default: &#x27;, &#x27;)
+         *  - &#x27;cellPrefix     :  string (can be html) to prefix each cell with. (default: &#x27;&#x27;)
+         *  - &#x27;cellPostfix    :  string (can be html) to postfix each cell  with. (default: &#x27;&#x27;)
+         *  - &#x27;rowPrefix      :  string (can be html) to prefix each row with. (default: &#x27;&lt;p&gt;&#x27;)
+         *  - &#x27;rowPostfix     :  string (can be html) to postfix each row with. (default: &#x27;&lt;/p&gt;&#x27;)
+         *  - &#x27;resultsPrefix  :  string (can be html) to prefix the results with. (default: &#x27;&lt;div&gt;&#x27;)
+         *  - &#x27;resultsPostfix :  string (can be html) to postfix the results with. (default: &#x27;&lt;/div&gt;&#x27;)
+         *
+         * @method draw
+         * @public
+         * @param {google.visualization.DataTable} data
+         * @param {Object} [chartOptions]
+         * @since 0.3.0
+         **/
+        C.Text = charts.add(modSC, &quot;Text&quot;,
+            function (data, chartOpt) {
+                var c, noColumns = data.getNumberOfColumns(),
+                    r, noRows = data.getNumberOfRows(),
+                    opt = $.extend({ cellSep: &#x27;, &#x27;,
+                                     cellPrefix: &#x27;&#x27;, cellPostfix: &#x27;&#x27;,
+                                     rowPrefix: &#x27;&lt;p&gt;&#x27;, rowPostfix: &#x27;&lt;/p&gt;&#x27;,
+                                     resultsPrefix: &#x27;&lt;div&gt;&#x27;, resultsPostfix: &#x27;&lt;/div&gt;&#x27; },
+                                   chartOpt),
+                    text = opt.resultsPrefix,
+                    row;
+
+
+                for (r = 0; r &lt; noRows; r += 1) {
+                    row = opt.rowPrefix;
+                    for (c = 0; c &lt; noColumns; c += 1) {
+                        row += opt.cellPrefix + C.util.linkify2String(data.getValue(r, c)) + opt.cellPostfix;
+                        if (c + 1 !== noColumns) { // Don&#x27;t add for last element in row.
+                            row += opt.cellSep;
+                        }
+                    }
+                    text += row + opt.rowPostfix;
+                }
+                text += opt.resultsPostfix;
+
+                $(this.container)
+                    .empty()
+                    .html(text);
+
+                this.fireListener(&#x27;ready&#x27;);
+            }
+            );
+
+
+        /**
+         * Extends google.visualization.Map in markers dataMode. Draws
+         * textboxes with heading, paragraph, link and image. 
+         * 
+         * Data Format 2--6 columns:
+         * 
+         *   1. lat
+         *   2. long
+         *   3. name  (optional)
+         *   4. text  (optional)
+         *   5. link  (optional)
+         *   6. image (optional)
+         * 
+         * - If &lt; 4 columns, then behaves just as gMap
+         * - Only 6 columns will be read, columns &gt; 6 are ignored.
+         * 
+         * @class sgvizler.visualization.Map
+         * @extends sgvizler.charts.Chart
+         * @constructor
+         * @param {Object} container The container element where the
+         * chart will be drawn.
+         * @since 0.3.0
+         **/
+
+        /**
+         * Same options available as for google.visualization.Map.
+         * 
+         * @method draw
+         * @public
+         * @param {google.visualization.DataTable} data
+         * @param {Object} [chartOptions]
+         * @since 0.3.0
+         */
+        C.Map = charts.add(modSC, &quot;Map&quot;,
+            function (data, chartOpt) {
+                /*global google */
+                var c, noColumns = data.getNumberOfColumns(),
+                    r, noRows = data.getNumberOfRows(),
+                    that = this,
+                    opt = $.extend({ dataMode: &#x27;markers&#x27;,
+                                     showTip: true,
+                                     useMapTypeControl: true
+                                   },
+                                   chartOpt),
+                    chart,
+                    newData,
+                    newValue;
+
+                C.util.loadCSS();
+
+                // The idea is to put all columns &gt; 2 into the
+                // 3. column with html formatting.
+
+                if (noColumns &gt; 3) {
+                    newData = data.clone();
+                    // drop columns &gt; 3 from new
+                    for (c = noColumns - 1; c &gt; 2; c -= 1) {
+                        newData.removeColumn(c);
+                    }
+
+                    // build new 3. column
+                    for (r = 0; r &lt; noRows; r += 1) {
+                        newValue = &quot;&lt;div class=&#x27;sgvizler sgvizler-sMap&#x27;&gt;&quot;;
+                        newValue += &quot;&lt;h1&gt;&quot; + data.getValue(r, 2) + &quot;&lt;/h1&gt;&quot;;
+                        if (5 &lt; noColumns &amp;&amp; data.getValue(r, 5) !== null) {
+                            newValue += &quot;&lt;div class=&#x27;img&#x27;&gt;&lt;img src=&#x27;&quot; + data.getValue(r, 5) + &quot;&#x27;/&gt;&lt;/div&gt;&quot;;
+                        }
+                        if (3 &lt; noColumns &amp;&amp; data.getValue(r, 3) !== null) {
+                            newValue += &quot;&lt;p class=&#x27;text&#x27;&gt;&quot; + data.getValue(r, 3) + &quot;&lt;/p&gt;&quot;;
+                        }
+                        if (4 &lt; noColumns &amp;&amp; data.getValue(r, 4) !== null) {
+                            newValue += &quot;&lt;p class=&#x27;link&#x27;&gt;&lt;a href=&#x27;&quot; + namespace.unprefixify(data.getValue(r, 4)) + &quot;&#x27;&gt;&quot; + data.getValue(r, 4) + &quot;&lt;/a&gt;&lt;/p&gt;&quot;;
+                        }
+                        newValue += &quot;&lt;/div&gt;&quot;;
+                        newData.setCell(r, 2, newValue);
+                    }
+                } else { // do nothing.
+                    newData = data;
+                }
+
+                chart = new google.visualization.Map(this.container);
+                chart.draw(newData, opt);
+
+                google.visualization.events.addListener(
+                    chart,
+                    &#x27;ready&#x27;,
+                    function () { that.fireListener(&#x27;ready&#x27;); }
+                );
+            },
+            {&#x27;google.visualization.Map&#x27;: &#x27;map&#x27; }
+            );
+
+        /**
+         * Make a html list, either numbered (ol) or bullets
+         * (ul). Each row becomes a list item.
+         * 
+         * Any number of columns in any format. Everything is
+         * displayed as text.
+         * 
+         * @class sgvizler.visualization.List
+         * @extends sgvizler.charts.Chart
+         * @constructor
+         * @param {Object} container The container element where the
+         * chart will be drawn.
+         * @since 0.3.0
+         **/
+
+        /** 
+         * Available options:
+         * 
+         *  - &#x27;list&#x27;      :  &quot;ol&quot; / &quot;ul&quot;  (default: &quot;ul&quot;)
+         *  - &#x27;cellSep&#x27;   :  string (can be html) to separate cells in row. (default: &#x27;, &#x27;)
+         *  - &#x27;rowPrefix  :  string (can be html) to prefix each row with. (default: &#x27;&#x27;)
+         *  - &#x27;rowPostfix :  string (can be html) to postfix each row with. (default: &#x27;&#x27;)
+         * 
+         * @method draw
+         * @public
+         * @param {google.visualization.DataTable} data
+         * @param {Object} [chartOptions]
+         * @since 0.3.0
+         **/
+        C.List = charts.add(modSC, &quot;List&quot;,
+            function (data, chartOpt) {
+                var c, noColumns = data.getNumberOfColumns(),
+                    r, noRows = data.getNumberOfRows(),
+                    opt = $.extend({ list: &#x27;ul&#x27;,
+                                     cellSep: &#x27;, &#x27;,
+                                     rowPrefix: &#x27;&#x27;,
+                                     rowPostfix: &#x27;&#x27; },
+                                   chartOpt),
+                    list = &#x27;&lt;&#x27; + opt.list + &#x27;&gt;&#x27;;
+
+                for (r = 0; r &lt; noRows; r += 1) {
+                    list += &#x27;&lt;li&gt;&#x27; + opt.rowPrefix;
+                    for (c = 0; c &lt; noColumns; c += 1) {
+                        list += C.util.linkify2String(data.getValue(r, c));
+                        if (c + 1 !== noColumns) { // Don&#x27;t add after last element in a row.
+                            list += opt.cellSep;
+                        }
+                    }
+                    list += opt.rowPostfix + &#x27;&lt;/li&gt;&#x27;;
+                }
+                list += &#x27;&lt;/&#x27; + opt.list + &#x27;&gt;&#x27;;
+
+                $(this.container)
+                    .empty()
+                    .html(list);
+
+                this.fireListener(&#x27;ready&#x27;);
+            }
+            );
+
+
+        /** 
+         * @class sgvizler.visualization.D3ForceGraph
+         * @extends sgvizler.charts.Chart
+         * @constructor
+         * @param {Object} container The container element where the
+         * chart will be drawn.
+         * @beta
+         */
+
+        /** 
+         * @method draw
+         * @public
+         * @param {google.visualization.DataTable} data
+         * @param {Object} [chartOptions]
+         * @since 0.5.0
+         */
+        /*global d3 */
+        C.D3ForceGraph = charts.add(modSC, &#x27;D3ForceGraph&#x27;,
+            function (data, chartOpt) {
+                var r, noRows = data.getNumberOfRows(),
+                    i, len,
+                    noColumns = data.getNumberOfColumns(),
+
+                    opt = $.extend({&#x27;maxnodesize&#x27;: 15, &#x27;minnodesize&#x27;: 2 }, chartOpt), // set defaults
+                    colors = d3.scale.category20(),
+                    w = chartOpt.width,
+                    h = chartOpt.height,
+                    isNumber = function (n) {  return !isNaN(parseFloat(n)) &amp;&amp; isFinite(n); },
+
+                    // build arrays of nodes and links.
+                    nodes = [],
+                    edges = [],
+                    t_color = {},
+                    t_size = {},
+                    t_maxnodesize = 0,
+
+                    source,
+                    target,
+
+                    nodesizeratio,
+                    color,
+                    size,
+
+                    vis,
+                    force,
+                    link,
+                    node,
+                    ticks;
+
+                C.util.loadCSS();
+
+                for (r = 0; r &lt; noRows; r += 1) {
+                    source = data.getValue(r, 0);
+                    target = data.getValue(r, 1);
+                    // nodes
+                    if (source !== null &amp;&amp; $.inArray(source, nodes) === -1) {
+                        nodes.push(source);
+                        t_size[source] = (noColumns &gt; 2) ? Math.sqrt(data.getValue(r, 2)) : 0;
+                        t_color[source] = (noColumns &gt; 3) ? data.getValue(r, 3) : 0;
+                        if (t_size[source] &gt; t_maxnodesize) {
+                            t_maxnodesize = t_size[source];
+                        }
+                    }
+                    if (target !== null &amp;&amp; $.inArray(target, nodes) === -1) {
+                        nodes.push(target);
+                    }
+                    // edges
+                    if (source !== null &amp;&amp; target !== null) {
+                        edges.push({&#x27;source&#x27;: $.inArray(source, nodes),
+                                    &#x27;target&#x27;: $.inArray(target, nodes)
+                                }
+                            );
+                    }
+                }
+                if (t_maxnodesize === 0) {
+                    t_maxnodesize = 1;
+                }
+                nodesizeratio = opt.maxnodesize / t_maxnodesize;
+                for (i = 0, len = nodes.length; i &lt; len; i += 1) {
+                    color = t_color[nodes[i]] !== undefined ?
+                            t_color[nodes[i]] :
+                            1;
+                    size = isNumber(t_size[nodes[i]]) ?
+                            opt.minnodesize + t_size[nodes[i]] * nodesizeratio :
+                            opt.minnodesize;
+
+                    nodes[i] = {&#x27;name&#x27;: nodes[i], &#x27;color&#x27;: color, &#x27;size&#x27;: size };
+                }
+
+                $(this.container).empty();
+
+                vis = d3.select(this.container)
+                    .append(&quot;svg:svg&quot;)
+                    .attr(&quot;width&quot;, w)
+                    .attr(&quot;height&quot;, h)
+                    .attr(&quot;pointer-events&quot;, &quot;all&quot;)
+                    .append(&#x27;svg:g&#x27;)
+                    .call(d3.behavior.zoom().on(&quot;zoom&quot;, function () {
+                        vis.attr(&quot;transform&quot;, &quot;translate(&quot; + d3.event.translate + &quot;)&quot; +
+                             &quot; scale(&quot; + d3.event.scale + &quot;)&quot;);
+                    }))
+                    .append(&#x27;svg:g&#x27;);
+
+                vis.append(&#x27;svg:rect&#x27;)
+                    .attr(&#x27;width&#x27;, w)
+                    .attr(&#x27;height&#x27;, h)
+                    .attr(&#x27;fill&#x27;, &#x27;white&#x27;);
+
+                force = d3.layout.force()
+                    .gravity(0.05)
+                    .distance(100)
+                    .charge(-100)
+                    .nodes(nodes)
+                    .links(edges)
+                    .size([w, h])
+                    .start();
+
+                link = vis.selectAll(&quot;line.link&quot;)
+                    .data(edges)
+                    .enter().append(&quot;svg:line&quot;)
+                    .attr(&quot;class&quot;, &quot;link&quot;)
+                    //.style(&quot;stroke-width&quot;, function (d) { return Math.sqrt(d.value); })
+                    .attr(&quot;x1&quot;, function (d) { return d.source.x; })
+                    .attr(&quot;y1&quot;, function (d) { return d.source.y; })
+                    .attr(&quot;x2&quot;, function (d) { return d.target.x; })
+                    .attr(&quot;y2&quot;, function (d) { return d.target.y; });
+
+                node = vis.selectAll(&quot;g.node&quot;)
+                    .data(nodes)
+                    .enter().append(&quot;svg:g&quot;)
+                    .attr(&quot;class&quot;, &quot;node&quot;)
+                    .call(force.drag);
+
+                node.append(&quot;svg:circle&quot;)
+                    .style(&quot;fill&quot;, function (d) { return colors(d.color); })
+                    .attr(&quot;class&quot;, &quot;node&quot;)
+                    .attr(&quot;r&quot;, function (d) { return d.size; });
+
+                node.append(&quot;svg:title&quot;)
+                    .text(function (d) { return d.name; });
+
+                node.append(&quot;svg:text&quot;)
+                    .attr(&quot;class&quot;, &quot;nodetext&quot;)
+                    .attr(&quot;dx&quot;, 12)
+                    .attr(&quot;dy&quot;, &quot;.35em&quot;)
+                    .text(function (d) { return d.name; });
+
+                ticks = 0;
+                force.on(&quot;tick&quot;, function () {
+                    ticks += 1;
+                    if (ticks &gt; 250) {
+                        force.stop();
+                        force.charge(0)
+                            .linkStrength(0)
+                            .linkDistance(0)
+                            .gravity(0)
+                            .start();
+                    }
+
+                    link.attr(&quot;x1&quot;, function (d) { return d.source.x; })
+                        .attr(&quot;y1&quot;, function (d) { return d.source.y; })
+                        .attr(&quot;x2&quot;, function (d) { return d.target.x; })
+                        .attr(&quot;y2&quot;, function (d) { return d.target.y; });
+
+                    node.attr(&quot;transform&quot;, function (d) {
+                        return &quot;translate(&quot; + d.x + &quot;,&quot; + d.y + &quot;)&quot;;
+                    });
+                });
+
+                this.fireListener(&#x27;ready&#x27;);
+            },
+            { d3: &#x27;//cdnjs.cloudflare.com/ajax/libs/d3/2.10.0/d3.v2.min.js&#x27; }
+            );
+
+        /**
+         * Utility functions for chart functions.
+         *
+         * .visualization
+         * @class sgvizler.visualization.util
+         * @static
+         */
+
+        C.util = (function () {
+            var
+
+                /**
+                 * Converts a url into a prefixified link or a picture.
+                 * @method linkify
+                 * @private
+                 * @param {String} url The url to linkify.
+                 * @param {boolean} arraySyntax Flag if results should
+                 * be rendered in array syntax (true), or as an HTML
+                 * string (false).
+                 * @param {String} width The width of the image
+                 * @param {String} height The height of the image
+                 * @return {String}
+                 */
+                linkify = function (url, arraySyntax, width, height) {
+                    if (typeof(width) == &#x27;undefined&#x27;){
+                        width=&#x27;100&#x27;;
+                    }
+                    if (typeof(height) == &#x27;undefined&#x27;){
+                        height=&#x27;100&#x27;;
+                    }
+                    var prefixed = namespace.prefixify(url),
+                        base = namespace.getBaseURL(),
+                        href = url, // the hyperlink.
+                        link,       // what to click.
+                        result;   
+
+                    // Is it linkable, or something else?
+                    if (prefixed !== url) {
+                        link = prefixed;
+                    } else if (S.util.isURL(url)) {
+                        link = url;
+                    }
+
+                    // If it is linkable, then HTML encode it as one.
+                    if (link) {
+                       
+                            // Append base URL to front, if specified.
+                            if (base) {
+                                href = base + url;
+                            }
+                            // Returns a result according to the format used by
+                            // sgvizler.util.createHTMLElement.
+                            if (arraySyntax) {
+                                result = [&#x27;a&#x27;, { href: href }, link];
+                            } else { // straight html
+                                result = &#x27;&lt;a href=&#x27; + href + &#x27;&gt;&#x27; + link + &#x27;&lt;/a&gt;&#x27;;
+                            }
+                        
+                    } else { // If it is not a link, then just pass it through.
+                        result = url;
+                    } 
+                    // Check if the link refers to a picture
+                    if (/(jpeg|jpg|gif|png|JPG|PNG|JPEG|svg)$/.test(url)){
+                        //Return a result in straight html
+                        if ( arraySyntax == false) {
+                             result = &#x27;&lt;img src=&#x27; + url + &#x27; alt= &quot;text&quot; style= &quot;width:&#x27; + width + &#x27;;height:&#x27; + height + &#x27;;&quot;&gt; &#x27;;
+                        }
+                    }
+                    return result;
+                },
+                cssloaded = false;
+
+            return {
+                /**
+                 * Converts a url into a &#x60;&lt;a href=&quot;&quot;&gt; or a &lt;img src=&quot;&quot;&gt;&#x60; element with the
+                 * link prefixified.
+                 * @method linkify2String
+                 * @protected
+                 * @param {String} url The url to linkify.
+                 * @param {String} width The width of the image
+                 * @param {String} height The height of the image
+                 * @return {String}
+                 */
+                linkify2String: function (url,width,height) {
+                    if (typeof(width) == &#x27;undefined&#x27;){
+                        width=&#x27;100&#x27;;
+                    }
+                    if (typeof(height) == &#x27;undefined&#x27;){
+                        height=&#x27;100&#x27;;
+                    }
+                    return linkify(url, false, width, height);
+                    
+                },
+                /**
+                 * Converts a url into an array on the format
+                 * described in &#x60;sgvizler.util.createHTMLElement&#x60;.
+                 * @method linkify2HTMLElemntArray
+                 * @protected
+                 * @param {String} url The url to linkify.
+                 * @return {Array}
+                 */
+                linkify2HTMLElementArray: function (url) {
+                    return linkify(url, true);
+                },
+
+                /**
+                 * Loads the css file &#x60;sgvizler.charts.css&#x60;.
+                 * @method loadCSS
+                 * @protected
+                 * @injects
+                 */
+                loadCSS: function () {
+                    if (!cssloaded) {
+                        $(&#x27;head&#x27;).append(&#x27;&lt;link rel=&quot;stylesheet&quot; href=&quot;&#x27; + S.core.CHARTSCSS + &#x27;&quot; type=&quot;text/css&quot; /&gt;&#x27;);
+                        cssloaded = true;
+                    }
+                },
+
+                /**
+                * Loads the Bootstrap necessary for Table_pict
+                * @method loadBOOTSTRAP
+                * @protected
+                * @injects
+                */
+                loadBOOTSTRAP: function() {
+                        $(&#x27;head&#x27;).append(&#x27;&lt;script type=&quot;text/javascript&quot; src=&quot;https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js&quot;&gt;&lt;/script&gt;&#x27;);
+                        $(&#x27;head&#x27;).append(&#x27;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css&quot; integrity=&quot;sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u&quot; crossorigin=&quot;anonymous&quot;/&gt;&#x27;);
+                        $(&#x27;head&#x27;).append(&#x27;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css&quot; integrity=&quot;sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp&quot; crossorigin=&quot;anonymous&quot;/&gt;&#x27;); 
+                }
+            };
+        }());
+
+        return C;
+    }());
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

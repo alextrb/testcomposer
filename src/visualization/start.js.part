@@ -1,0 +1,15 @@
+    /**
+     * .visualization
+     * @main sgvizler.visualization
+     */
+    S.visualization = (function () {
+
+        // Module dependencies:
+        var util = S.util,
+            namespace = S.namespace,
+            charts = S.charts,
+            bordercloud= BorderCloud.visualization,
+
+            C = {}, // sgvizler.visualization
+
+            modSC = "sgvizler.visualization";

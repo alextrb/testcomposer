@@ -1,0 +1,11 @@
+{
+    "name": "Sgvizler",
+    "description": "",
+    "version": "0.6.0",
+    "url": "http://mgskjaeveland.github.io/sgvizler/",
+    "logo": "http://beta.data2000.no/misc/image/mr.sgvizler.png",
+    "options": {
+        "linkNatives": "true",
+	"extentions": ".js, .js.part"
+    }   
+}

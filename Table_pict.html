@@ -1,0 +1,45 @@
+<html>
+
+  <head>
+    <title>MWE</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="sgvizler.js"></script>
+ <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"/>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <p>Please allow the page to load for a few seconds.</p>
+
+    <div id="example"
+       data-sgvizler-endpoint="https://query.wikidata.org/sparql" 
+  	   data-sgvizler-query="PREFIX bd: &lt;http://www.bigdata.com/rdf#&gt; 
+							PREFIX wikibase: &lt;http://wikiba.se/ontology#&gt; 
+							PREFIX wd: &lt;http://www.wikidata.org/entity/&gt; 
+							PREFIX wdt: &lt;http://www.wikidata.org/prop/direct/&gt; 
+
+					        SELECT  ?personLabel  ?image ?Erdos ?pict
+
+								WHERE {
+								  ?person wdt:P485 wd:Q964035 .
+								  ?person wdt:P18 ?image .
+								  ?person wdt:P2021 ?Erdos .
+                  ?person wdt:P18 ?pict .
+								  SERVICE wikibase:label {
+										bd:serviceParam wikibase:language 'en' .    
+								  }
+							    }"
+       data-sgvizler-chart="BorderCloud.visualization.Table_mult"
+       data-sgvizler-chart-options= "test=col2_img_max-width:250px;col2_img_border-radius:50%;col2_img_display:block;col2_img_margin:auto;col3_img_max-width:300px;col3_img_max-height:300px;col2_img_opacity:0.5;col2_img_filter:alpha(opacity=50);" />
+       
+  
+         <script>
+			$(document).ready(
+         	function (){ sgvizler.containerDrawAll(); })
+   		 </script>
+  </body>
+</html>
+
+			 
