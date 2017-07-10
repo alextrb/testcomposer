@@ -1,6 +1,8 @@
 {
+	"name": "alextrb/sgvizler",
     "require": {
     	"monolog/monolog": "1.0.*",
         "twbs/bootstrap": "4.0.0-alpha.6"
+    
     }
 }
